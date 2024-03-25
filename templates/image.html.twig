@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if message is defined or data is null %}
+        {{ message ?? 'No image available.' }}
+    {% endif %}
+    {% if data is defined and data is not empty %}
+    <div class="container">
+        <h1>Today's image:</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="imgAbt">
+                    <img width="300" height="300"  src="{{ data.urlImage }}"  alt="{{ data.title }}" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h2>{{ data.title }}</h2>
+            <p>{{ data.explanation }}</p>
+            <p>{{ data.date|date('Y-m-d') }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}
